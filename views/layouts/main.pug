@@ -4,8 +4,29 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title PINK PRETTY PRINCESS
+        link(rel="stylesheet", href="/styles/styles.css")
+        link(rel="preconnect", href="https://fonts.gstatic.com")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Assistant&family=Major+Mono+Display&display=swap")
+
 
     body 
-        header.header HEADER
+        header.header 
+           .header__col1
+           .header__col2
+             ul.header__col2__ul
+                li.header__col2__ul__list
+                    a(href="/") HOME
+                li.header__col2__ul__list.devMenu DEV
+                    .subBox
+                        h2 
+                            a(hreaf="#") JavaScript
+                        h2
+                            a(hreaf="#")  MongoDb
+                        h2
+                            a(hreaf="#")  NodeJs
+                        h2
+                            a(hreaf="#")  React
+                li.header__col2__ul__list 
+                    a(href="contact") CONTACT
         block content
         footer.footer FOOTER
