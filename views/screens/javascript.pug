@@ -13,8 +13,10 @@ block content
                 li.boardHeader__field 제목
                 li.boardHeader__field 작성일
                 li.boardHeader__field 조회수
+
+        each data in dataResult
             ul.boardBody
-                li.boardBody__field 1
-                li.boardBody__field title
-                li.boardBody__field createAt
-                li.boardBody__field hit
+                li.boardBody__field #{data.no}
+                li.boardBody__field #{data.title}
+                li.boardBody__field #{data.createAt}
+                li.boardBody__field #{data.hit}
