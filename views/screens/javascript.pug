@@ -1,22 +1,23 @@
 extends ../layouts/main.pug
 
 block content
-    div.boardTitle 
-        h2.boaedTitle__head JavaScript
-    div.boardSearch  
-        input.boardSearch__search(type="text" placeholder="제목 검색...")
-    div.boardContents   
+    .boardTitle
+        h2.boardTitle__head JAVASCRIPT
+    .boardSearch
+        input.boardSearch__search(type="text" placeholder="제목검색….")
+    .boardContents
         div.boardContents__rsWrapper
-            //- BOARD-HEADER
+            //- BOARO-HEADER
             ul.boardHeader
                 li.boardHeader__field 번호
                 li.boardHeader__field 제목
                 li.boardHeader__field 작성일
-                li.boardHeader__field 조회수
+                li.boardHeader__field 조회수 
 
-        each data in dataResult
-            ul.boardBody
-                li.boardBody__field #{data.no}
-                li.boardBody__field #{data.title}
-                li.boardBody__field #{data.createAt}
-                li.boardBody__field #{data.hit}
+            each data in dataResult
+                ul.boardBody
+                    li.boardBody__field #{data.no}
+                    li.boardBody__field
+                        a(href=`/board/detail/${data._id}`) #{data.title}
+                    li.boardBody__field #{data.createdAt}
+                    li.boardBody__field #{data.hit}

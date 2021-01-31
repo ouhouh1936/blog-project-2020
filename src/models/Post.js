@@ -25,7 +25,7 @@ const Post = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: `PostType`,
     },
-    createAt: {
+    createdAt: {
       type: String,
       required: true,
     },
