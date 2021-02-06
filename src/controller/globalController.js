@@ -1,8 +1,9 @@
 import Post from "../models/Post";
 import PostType from "../models/PostType";
+import dotenv from "dotenv";
+dotenv.config();
 
 const homeController = (req, res) => {
-  console.log("I'm home Controller");
   res.render("screens/home");
 };
 
@@ -12,21 +13,29 @@ const contactController = (req, res) => {
 const javascriptController = async (req, res) => {
   try {
     const dataResult = await Post.find().populate({
-      path: "postType",
+      path: "PostType",
       model: PostType,
     });
 
-    res.render("screens/javascript", { dataResult });
+    if (process.env.NODE_ENV === "development") {
+      console.log("dev mode!!!!!!!!");
+    }
+
+    const devMode = process.env.NODE_ENV === "development";
+
+    res.render("screens/javascript", { dataResult, devMode });
   } catch (e) {
     console.log(e);
     res.render("screens/home");
   }
-
-  res.render("screens/javascript");
+};
+const boardWriteController = (req, res) => {
+  res.render("screens/boardWrite");
 };
 
 export const globalController = {
   homeController,
   contactController,
   javascriptController,
+  boardWriteController,
 };

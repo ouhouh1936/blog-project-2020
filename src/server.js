@@ -4,6 +4,7 @@ dotenv.config();
 import morgan from "morgan";
 import globalRouter from "./router/globalRouter";
 import boardRouter from "./router/boardRouter";
+
 import path from "path";
 import connect from "../db";
 
