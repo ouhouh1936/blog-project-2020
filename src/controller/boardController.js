@@ -2,13 +2,15 @@ import Post from "../models/Post";
 import PostType from "../models/PostType";
 import { globalController } from "./globalController";
 import mongoose from "mongoose";
+import middlewares from "../common/middlewares";
 
 const detailController = async (req, res) => {
   try {
     const postData = await Post.findOne({ _id: req.params.id });
-    res.render("screens/boardDetail", { postData });
 
-    console.log(postData);
+    const devMode = middlewares.checkDevMode();
+
+    res.render("screens/boardDetail", { postData, devMode });
   } catch (e) {
     console.log(e);
     res.render("screens/home");
@@ -22,18 +24,24 @@ const boardWriteController = (req, res) => {
 };
 
 const boardWriteDbController = async (req, res) => {
-  let serchType = "";
+  console.log(req.body.title);
+  console.log(req.body.desc);
+  console.log(req.body.type);
+
+  let searchType = "";
 
   if (req.body.type === "javascript") {
-    serchType = "JS";
+    searchType = "JS";
   }
+  // 1. postType에 들어갈 objectId가 필요하다
+
   try {
-    const type = await PostType.findOne({ typeName: serchType });
+    const type = await PostType.findOne({ typeName: searchType });
 
     const currentTime = new Date().toString();
-
     const allPost = await Post.find();
     const postNo = allPost.length + 1;
+
     const newPostTypeId = mongoose.Types.ObjectId(type._id);
 
     const result = await Post.create({
@@ -44,13 +52,30 @@ const boardWriteDbController = async (req, res) => {
       postType: newPostTypeId,
       createdAt: currentTime,
       lastUpdatedAt: currentTime,
-      isDlete: false,
+      isDelete: false,
       no: postNo,
     });
 
-    console.log("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅");
+    console.log("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
     console.log(result);
-    console.log("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅");
+    console.log("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
+  } catch (e) {
+    console.log(e);
+  }
+
+  globalController.javascriptController(req, res);
+};
+
+const deleteBoardController = async (req, res) => {
+  try {
+    const result = await Post.updateOne(
+      { _id: req.body.id },
+      {
+        $set: {
+          isDelete: true,
+        },
+      }
+    );
   } catch (e) {
     console.log(e);
   }
@@ -62,4 +87,5 @@ export const boardController = {
   detailController,
   boardWriteController,
   boardWriteDbController,
+  deleteBoardController,
 };
