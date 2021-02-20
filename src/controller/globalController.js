@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const homeController = (req, res) => {
+  console.log("I'm home Controller");
   res.render("screens/home");
 };
 
@@ -17,10 +18,6 @@ const javascriptController = async (req, res) => {
       model: PostType,
     });
 
-    if (process.env.NODE_ENV === "development") {
-      console.log("dev mode!!!!!!!!");
-    }
-
     const devMode = process.env.NODE_ENV === "development";
 
     res.render("screens/javascript", { dataResult, devMode });
@@ -29,7 +26,8 @@ const javascriptController = async (req, res) => {
     res.render("screens/home");
   }
 };
-const boardWriteController = (req, res) => {
+
+const boardwriteController = (req, res) => {
   res.render("screens/boardWrite");
 };
 
@@ -37,5 +35,5 @@ export const globalController = {
   homeController,
   contactController,
   javascriptController,
-  boardWriteController,
+  boardwriteController,
 };

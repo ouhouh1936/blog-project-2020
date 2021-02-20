@@ -1,25 +1,28 @@
 //global router
-const HOME = `/`;
+const HOME = "/";
 const CONTACT = `/contact`;
-const BOARD_WRITE = `/boardWrite`;
 
 //development router
 const DEVELOPMENT = `/development`;
 const NODEJS = `/nodejs`;
-const MONGODB = `/mongoDb`;
-const JAVASCRIPT = `/javaScript`;
+const MONGODB = `/mongoDB`;
+const JAVASCRIPT = `/javascript`;
 const REACT = `/react`;
 
-//board
+// board
 const BOARD_DETAIL = `/detail/:id`;
+const BOARD_WRITE = `/write/:type`;
+const BOARD_WRITE_DB = `/write`;
+
 export const routers = {
   HOME,
   CONTACT,
-  BOARD_DETAIL,
   DEVELOPMENT,
   NODEJS,
   MONGODB,
   JAVASCRIPT,
   REACT,
+  BOARD_DETAIL,
   BOARD_WRITE,
+  BOARD_WRITE_DB,
 };

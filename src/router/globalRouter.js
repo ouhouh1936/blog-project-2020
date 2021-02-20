@@ -7,6 +7,5 @@ const globalRouter = express.Router();
 globalRouter.get(routers.HOME, globalController.homeController);
 globalRouter.get(routers.CONTACT, globalController.contactController);
 globalRouter.get(routers.JAVASCRIPT, globalController.javascriptController);
-globalRouter.get(routers.BOARD_WRITE, globalController.boardWriteController);
 
 export default globalRouter;
