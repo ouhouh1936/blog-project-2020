@@ -1,6 +1,6 @@
 import express from "express";
 import { routers } from "../routers";
-import { globalController } from "../controller/globalController";
+import { globalController } from "../controller/globalContrller";
 
 const globalRouter = express.Router();
 

@@ -33,7 +33,7 @@ const Post = new Schema(
       type: String,
       required: true,
     },
-    isDelte: {
+    isDelete: {
       type: Boolean,
       required: true,
       default: false,

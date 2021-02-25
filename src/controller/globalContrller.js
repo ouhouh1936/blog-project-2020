@@ -14,7 +14,7 @@ const contactController = (req, res) => {
 };
 const javascriptController = async (req, res) => {
   try {
-    const dataResult = await Post.find({ isDelte: false }).populate({
+    const dataResult = await Post.find({ isDelete: false }).populate({
       path: "PostType",
       model: PostType,
     });
